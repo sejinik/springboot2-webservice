@@ -25,12 +25,22 @@ deploy:
   - provider: s3
     access_key_id: $AWS_ACCESS_KEY # Travis repo 설정값
     secret_access_key: $AWS_SECRET_KEY # Travis repo 설정값
-
     bucket: sejinik-springboot2-build # s3 버킷
     region: ap-northeast-2
     skip_cleanup: true
     acl: private # zip 파일 접근을 private로
     local_dir: deploy # before_deploy에서 생성한 디렉토리
+    wait-until-deployed: true
+
+  - provider: codedeploy
+    access_key_id: $AWS_ACCESS_KEY
+    secret_access_key: $AWS_SECRET_KEY
+    bucket: sejinik-springboot2-build
+    key : springboot2-webservice.zip
+    bundle_type: zip
+    application: springboot2-webservice
+    deployment_group: springboot2-webservice-group
+    region: ap-northeast-2
     wait-until-deployed: true
 
 # CI 실행 완료 시 메일로 알람

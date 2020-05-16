@@ -21,3 +21,5 @@ notifications:
   email:
     recipients:
       - sejinik@gmail.com
+    on_success: always
+    on_failure: always

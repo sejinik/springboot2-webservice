@@ -51,6 +51,6 @@ deploy:
 notifications:
   email:
     recipients:
-      - sejinik@gmail.com
+      - sejinik@naver.com
     on_success: always
     on_failure: always
